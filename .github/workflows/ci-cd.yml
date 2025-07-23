@@ -11,20 +11,18 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      mysql:
-        image: mysql:8.2
-        env:
-          MYSQL_DATABASE: cbc_api
-          MYSQL_USER: admin
-          MYSQL_PASSWORD: 123
-          MYSQL_ROOT_PASSWORD: root
-        ports:
-          - 3306:3306
-        options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -proot"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
+        mysql:
+            image: mysql:8.2
+            env:
+                MYSQL_DATABASE: cbc_api
+                MYSQL_USER: admin
+                MYSQL_PASSWORD: 123
+                MYSQL_ROOT_PASSWORD: root
+            options: >-
+                --health-cmd="mysqladmin ping -h 127.0.0.1 -u root -proot"
+                --health-interval=10s
+                --health-timeout=5s
+                --health-retries=5
 
     steps:
     - name: Clonar o repositório
