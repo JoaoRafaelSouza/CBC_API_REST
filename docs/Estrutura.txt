@@ -1,8 +1,10 @@
 CBC_API_REST/
 ├── .github/
 ├── controllers/
+├── css/
 ├── docs/
 │   └── Estrutura.txt
+├── js/
 ├── models/
 ├── views/
 ├── .env
