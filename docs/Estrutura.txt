@@ -1,0 +1,16 @@
+CBC_API_REST/
+├── .github/
+├── controllers/
+├── docs/
+│   └── Estrutura.txt
+├── models/
+├── views/
+├── .env
+├── .env_local
+├── .gitignore
+├── Como_Usar_A_Limpeza.txt
+├── docker-compose.yml
+├── Dockerfile
+├── index.php
+├── limpeza_docker.bat
+└── README.md

@@ -1,0 +1,9 @@
+Como usar:
+
+bash
+chmod +x limpeza_docker.bat
+
+Executar:
+
+bash
+./limpeza_docker.bat
