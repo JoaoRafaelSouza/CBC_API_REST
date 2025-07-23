@@ -12,7 +12,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8.2-apache
+        image: mysql:8.2
         env:
           MYSQL_DATABASE: cbc_api
           MYSQL_USER: admin
@@ -30,16 +30,11 @@ jobs:
     - name: Clonar o repositório
       uses: actions/checkout@v4
 
-    - name: Instalar Docker Compose
-      run: |
-        sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-        sudo chmod +x /usr/local/bin/docker-compose
-
-    - name: Verificar sintaxe PHP
+    - name: Verificar sintaxe do PHP
       run: php -l index.php
 
-    - name: Subir containers
-      run: docker-compose up -d --build
+    - name: Subir containers (docker-compose)
+      run: docker compose up -d --build
 
     - name: Aguardar containers subirem
       run: sleep 15
@@ -50,4 +45,4 @@ jobs:
 
     - name: Finalizar containers
       if: always()
-      run: docker-compose down
+      run: docker compose down -v
