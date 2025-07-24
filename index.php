@@ -2,6 +2,7 @@
 // echo "<h1>API CBC Rodando!</h1>";
 // echo "<p>Ambiente: " . getenv('APP_ENV') . "</p>";
 // echo "<p>Banco de dados: " . getenv('DB_DATABASE') . "</p>";
+require 'autoload.php'
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/complementos.css" rel="stylesheet">
+    <script src="js/complementos.js"></script>
     <title>CBC_API</title>
 </head>
 <body>

@@ -1,15 +1,39 @@
 CBC_API_REST/
 ├── .github/
-├── controllers/
+│   └── workflows
+│   │   ├── ci-cd.yml
+│   │   └── README.md
+│
+├── Config/
+│   └── Conexao.php
+│
+├── Controllers/
+│   ├── Clube_Controller.php
+│   └── Recursos_Controller.php
+│
 ├── css/
+│   └── complementos.css
+│
+├── Daos/
+│   └── Helpers.php
+│
 ├── docs/
 │   └── Estrutura.txt
+│
 ├── js/
-├── models/
-├── views/
+│   └── complementos.js
+│
+├── Models/
+│   ├── Clube_Model.php
+│   └── Recursos_Model.php
+│
+├── Views/
+│   └── Resultado_View.php
+│
 ├── .env
 ├── .env_local
 ├── .gitignore
+├── autoload.php
 ├── Como_Usar_A_Limpeza.txt
 ├── docker-compose.yml
 ├── Dockerfile

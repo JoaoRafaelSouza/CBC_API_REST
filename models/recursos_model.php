@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class recursos_model {
+class Recursos_Model {
     protected $table = 'clubes';
     protected $primaryKey = 'id';
     public $recurso = 'recurso';

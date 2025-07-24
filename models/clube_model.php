@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class ClubeModel
+class Clube_Model
 {
     
 }
