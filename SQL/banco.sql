@@ -15,6 +15,15 @@ CREATE TABLE clubes (
     ativado BIT NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE consumos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    clube_id INT NOT NULL,
+    recurso_id INT NOT NULL,
+
+    FOREIGN KEY (clube_id) REFERENCES clubes(id) ON DELETE CASCADE,
+    FOREIGN KEY (recurso_id) REFERENCES recursos(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 INSERT INTO recursos (recurso, saldo_disponivel, ativado) VALUES 
 ('Recurso para passagens', 10000.00, 1),
 ('Recurso para hospedagens', 10000.00, 1);

@@ -35,16 +35,16 @@ class Recursos_Controller
         }
 
         $clube = (new Clube_Model())
-                    ->setId($clubeInfo[0]['id'])
-                    ->setClube($clubeInfo[0]['clube'])
-                    ->setSaldoDisponivel($clubeInfo[0]['saldo_disponivel'])
-                    ->setAtivado($clubeInfo[0]['ativado']);
+            ->setId($clubeInfo[0]['id'])
+            ->setClube($clubeInfo[0]['clube'])
+            ->setSaldoDisponivel($clubeInfo[0]['saldo_disponivel'])
+            ->setAtivado($clubeInfo[0]['ativado']);
 
         $recurso = (new Recursos_Model())
-                    ->setId($recursoInfo[0]['id'])
-                    ->setRecurso($recursoInfo[0]['recurso'])
-                    ->setSaldoDisponivel($recursoInfo[0]['saldo_disponivel'])
-                    ->setAtivado($recursoInfo[0]['ativado']);
+            ->setId($recursoInfo[0]['id'])
+            ->setRecurso($recursoInfo[0]['recurso'])
+            ->setSaldoDisponivel($recursoInfo[0]['saldo_disponivel'])
+            ->setAtivado($recursoInfo[0]['ativado']);
 
         $valor = floatval($dados['valor_consumo']);
 
@@ -67,5 +67,60 @@ class Recursos_Controller
             "saldo_anterior" => $clube->getSaldoDisponivel(),
             "saldo_atual" => $novoSaldoClube
         ]);
+    }
+
+    public function cadastrar($dados)
+    {
+
+        // Verifica se os dados estão sendo enviados direito
+        if (!isset($dados['recurso']) || !isset($dados['saldo_disponivel'])) {
+            http_response_code(400);
+            echo json_encode(["erro" => "Campos obrigatórios ausentes."]);
+            return;
+        }
+
+        // Verifica se saldo é negativo
+        if (floatval($dados['saldo_disponivel']) < 0) {
+            http_response_code(400);
+            echo json_encode(["erro" => "Saldo não pode ser negativo."]);
+            return;
+        }
+
+        // Aqui estou usando a Recursos_Model.php
+        $recursos = new Recursos_Model();
+        $recursos->setRecurso($dados['recurso']);
+        $recursos->setSaldoDisponivel($dados['saldo_disponivel']);
+        $recursos->setAtivado(1);
+
+        // Aqui eu estou utilizando o método da minha Helpers.php
+        $dao = new Helpers();
+        $campos = "recurso, saldo_disponivel, ativado";
+        $valores = "'{$recursos->getRecurso()}', '{$recursos->getSaldoDisponivel()}', {$recursos->isAtivado()}";
+
+        // Aqui tenho o include
+        $resultado = $dao->Incluir("recursos", $campos, $valores);
+        echo json_encode(["mensagem" => $resultado]);
+    }
+
+    public function listar()
+    {
+        $dao = new Helpers();
+        $dados = $dao->Listar("recursos", "*", "ativado = 1", "id");
+
+        $recursos = [];
+        foreach ($dados as $linha) {
+            $recurso = new Recursos_Model();
+            $recurso->setId($linha['id'])
+                ->setRecurso($linha['recurso'])
+                ->setSaldoDisponivel($linha['saldo_disponivel'])
+                ->setAtivado($linha['ativado']);
+            $recursos[] = [
+                "id" => $recurso->getId(),
+                "recurso" => $recurso->getRecurso(),
+                "saldo_disponivel" => $recurso->getSaldoDisponivel()
+            ];
+        }
+
+        echo json_encode($recursos);
     }
 }

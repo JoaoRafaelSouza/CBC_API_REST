@@ -38,4 +38,60 @@ Em cada lista existem quatro botões, um Deletar, um Editar, um Novo e um Recupe
 * Deletar -> Excluí um recurso ou clube, dependendo da lista que está.
 * Recuperar -> Recupera um recurso ou clube que foi deletado errado ou que foi deletado a muito tempo.
 
-## 
+## Para fazer os testes via Postman
+
+### Abaixo é o acesso a lista
+
+Acesse: http://localhost:8080/index.php?rota=clubes
+Coloque como GET.
+Na aba Headers, se não houver coloque este key: Content-Type e o value: application/json.
+Depois clicar em Send.
+
+### Abaixo temos o acesso de cadastro de um clube
+
+Acesse: http://localhost:8080/index.php?rota=clubes
+Coloque como POST.
+Na aba Headers, se não houver coloque este key: Content-Type e o value: application/json.
+Vá na aba Body e escolha raw e lá no final da mesma linha que colocou o raw, você deve ver um select, selecione JSON.
+No espaço abaixo altere o JSON para incluir um clube
+{
+  "clube": "Clube Teste",
+  "saldo_disponivel": 1234.56,
+  "ativado": 1
+}
+Depois clicar em Send.
+
+### Listar um recurso via URL
+
+Acesse: http://localhost:8080/index.php?rota=recursos
+Coloque como GET.
+Na aba Headers, se não houver coloque este key: Content-Type e o value: application/json.
+Depois clicar em Send.
+
+### Cadastrar um novo recurso via URL
+
+Acesse: http://localhost:8080/index.php?rota=recursos
+Coloque como POST.
+Na aba Headers, se não houver coloque este key: Content-Type e o value: application/json.
+Vá na aba Body e escolha raw e lá no final da mesma linha que colocou o raw, você deve ver um select, selecione JSON.
+No espaço abaixo altere o JSON para incluir um clube
+{
+  "recurso": "Recurso Teste",
+  "saldo_disponivel": 1234.56,
+  "ativado": 1
+}
+Depois clicar em Send.
+
+### Para verificar o método consumir
+
+Acesse: http://localhost:8080/index.php?rota=consumir
+Coloque como POST.
+Na aba Headers, se não houver coloque este key: Content-Type e o value: application/json.
+Vá na aba Body e escolha raw e lá no final da mesma linha que colocou o raw, você deve ver um select, selecione JSON.
+No espaço abaixo altere o JSON para incluir um clube
+{
+  "clube_id": 1,
+  "recurso_id": 2,
+  "valor_consumo": 500.00
+}
+Depois clicar em Send.
