@@ -12,10 +12,10 @@ class Conexao {
         }
 
         $env = parse_ini_file($envPath);
-        $host = $env['DB_HOST'];
-        $dbname = $env['DB_NAME'];
-        $user = $env['DB_USER'];
-        $pass = $env['DB_PASS'];
+        $host = $env['DB_HOST'] ?? 'localhost';
+        $dbname = $env['DB_DATABASE'];
+        $user = $env['DB_USERNAME'];
+        $pass = $env['DB_PASSWORD'];
 
         try {
             $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
