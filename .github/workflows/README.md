@@ -13,10 +13,11 @@ Este projeto possui uma pipeline automatizada de **Integração Contínua (CI)**
 
 ## Etapas do CI
 
-`checkout` -> Clona o repositório para o runner GitHub `php -l` -> Verifica se o `index.php` possui erros de sintaxe
-`docker compose up` -> Constrói os containers e inicia a aplicação com `Dockerfile` e `docker-compose.yml`
-`curl localhost:8080` -> Verifica se a API responde corretamente
-`docker compose down` -> Finaliza e remove os containers após o teste                            |
+checkout -> Clona o repositório para o runner GitHub 
+php -l -> Verifica se o index.php possui erros de sintaxe
+docker compose up -> Constrói os containers e inicia a aplicação com Dockerfile e docker-compose.yml
+curl localhost:8080 -> Verifica se a API responde corretamente
+docker compose down -> Finaliza e remove os containers após o teste                            |
 
 ## Estrutura CI/CD
 

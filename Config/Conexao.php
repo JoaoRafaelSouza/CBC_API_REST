@@ -1,35 +1,29 @@
 <?php
 namespace Config;
 
+use PDO;
+use PDOException;
+
 class Conexao {
-    private $host;
-    private $dbname;
-    private $username;
-    private $password;
-    private $conn;
+    public static function conectar() {
+        $envPath = __DIR__ . '/../.env.local';
+        if (!file_exists($envPath)) {
+            die("Arquivo .env.local não encontrado.");
+        }
 
-    public function __construct()
-    {
-        // Carrega variáveis do .env
-        $env = parse_ini_file(__DIR__ . '/../.env.local');
-        $this->host = $env['DB_HOST'];
-        $this->dbname = $env['DB_NAME'];
-        $this->username = $env['DB_USER'];
-        $this->password = $env['DB_PASS'];
-    }
+        $env = parse_ini_file($envPath);
+        $host = $env['DB_HOST'];
+        $dbname = $env['DB_NAME'];
+        $user = $env['DB_USER'];
+        $pass = $env['DB_PASS'];
 
-    public function conectar()
-    {
         try {
-            $this->conn = new PDO(
-                "mysql:host={$this->host};dbname={$this->dbname};charset=utf8",
-                $this->username,
-                $this->password
-            );
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->conn;
+            $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $pdo;
         } catch (PDOException $e) {
-            die("Erro de conexão: " . $e->getMessage());
+            error_log($e->getMessage());
+            die("Erro ao conectar ao banco de dados.");
         }
     }
 }

@@ -3,12 +3,28 @@
 namespace Models;
 
 class Recursos_Model {
-    protected $table = 'clubes';
+    protected $table = 'recursos';
     protected $primaryKey = 'id';
-    public $recurso = 'recurso';
-    public $saldo_disponivel = 'recurso';
-    
-        public function getRecurso()
+
+    private $id;
+    private $recurso;
+    private $saldo_disponivel;
+    private $ativado;
+
+    // ID
+    public function getId()
+    {
+        return $this->id ?? null;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    // Recurso
+    public function getRecurso()
     {
         return $this->recurso ?? null;
     }
@@ -19,6 +35,7 @@ class Recursos_Model {
         return $this;
     }
 
+    // Saldo Disponível
     public function getSaldoDisponivel()
     {
         return $this->saldo_disponivel ?? null;
@@ -27,6 +44,18 @@ class Recursos_Model {
     public function setSaldoDisponivel($saldo)
     {
         $this->saldo_disponivel = $saldo;
+        return $this;
+    }
+
+    // Ativado
+    public function isAtivado()
+    {
+        return $this->ativado ?? null;
+    }
+
+    public function setAtivado($ativo)
+    {
+        $this->ativado = $ativo;
         return $this;
     }
 }

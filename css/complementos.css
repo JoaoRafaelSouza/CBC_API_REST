@@ -1,12 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
+    margin: 1px !important;
+    padding: 1px !important;
     box-sizing: border-box;
     text-decoration: none;
     border: none;
     outline: none;
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
+}
+
+.ajuste_span{
+    padding: 5px !important;
+    margin: 5px !important;
+    color: white
+}
+
+.ajuste_i{
+    font-size: 13px !important;
+    padding: 5px !important;
+    color: white
 }
