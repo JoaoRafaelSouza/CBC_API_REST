@@ -12,6 +12,7 @@ CBC_API_REST/
 │   └── Recursos_Controller.php
 │
 ├── css/
+│   ├── bootstrap.min.css
 │   └── complementos.css
 │
 ├── Daos/
@@ -21,6 +22,9 @@ CBC_API_REST/
 │   └── Estrutura.txt
 │
 ├── js/
+│   ├── bootstrap-notify.min.js
+│   ├── bootstrap.bundle.min.js
+│   ├── bootstrap.min.js
 │   └── complementos.js
 │
 ├── Models/
